@@ -1,12 +1,12 @@
-document.getElementById('fileInput').addEventListener('change', function(e) {
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const data = new Uint8Array(e.target.result);
-    const workbook = XLSX.read(data, { type: 'array' });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
+const GITHUB_XLSX_URL = "https://raw.githubusercontent.com/yourusername/yourrepo/main/data.xlsx";
+
+fetch(GITHUB_XLSX_URL)
+  .then(res => res.arrayBuffer())
+  .then(data => {
+    const workbook = XLSX.read(data, { type: "array" });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-    
+
     const tbody = document.querySelector("#eventTable tbody");
     tbody.innerHTML = "";
 
@@ -25,6 +25,5 @@ document.getElementById('fileInput').addEventListener('change', function(e) {
       });
       tbody.appendChild(tr);
     });
-  };
-  reader.readAsArrayBuffer(e.target.files[0]);
-});
+  })
+  .catch(error => console.error("Error fetching Excel file:", error));
