@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://mynalgonda.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" type="image/svg+xml" href="https://mynalgonda.com/vite.svg">
+		<meta name="generator" content="Hostinger Horizons">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Hostinger Horizons</title>
+		<script type="module" crossorigin="" src="./Hostinger Horizons_files/index-32edcf47.js.download"></script>
+		<link rel="stylesheet" href="./Hostinger Horizons_files/index-b44c371b.css">
+		<script type="module">
+window.onerror = (message, source, lineno, colno, errorObj) => {
+	window.parent.postMessage({
+		type: 'horizons-runtime-error',
+		message,
+		source,
+		lineno,
+		colno,
+		error: errorObj && errorObj.stack
+	}, '*');
+};
+</script>
+		<script type="module">
+const observer = new MutationObserver((mutations) => {
+	for (const mutation of mutations) {
+		for (const addedNode of mutation.addedNodes) {
+			if (
+				addedNode.nodeType === Node.ELEMENT_NODE &&
+				(
+					addedNode.tagName?.toLowerCase() === 'vite-error-overlay' ||
+					addedNode.classList?.contains('backdrop')
+				)
+			) {
+				handleViteOverlay(addedNode);
+			}
+		}
+	}
+});
+
+observer.observe(document.documentElement, {
+	childList: true,
+	subtree: true
+});
+
+function handleViteOverlay(node) {
+	if (!node.shadowRoot) {
+		return;
+	}
+
+	const backdrop = node.shadowRoot.querySelector('.backdrop');
+
+	if (backdrop) {
+		const overlayHtml = backdrop.outerHTML;
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(overlayHtml, 'text/html');
+		const messageBodyElement = doc.querySelector('.message-body');
+		const fileElement = doc.querySelector('.file');
+		const messageText = messageBodyElement ? messageBodyElement.textContent.trim() : '';
+		const fileText = fileElement ? fileElement.textContent.trim() : '';
+		const error = messageText + (fileText ? ' File:' + fileText : '');
+
+		window.parent.postMessage({
+			type: 'horizons-vite-error',
+			error,
+		}, '*');
+	}
+}
+</script>
+		<script type="module">
+const originalConsoleError = console.error;
+console.error = function(...args) {
+	originalConsoleError.apply(console, args);
+
+	const errorString = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ').toLowerCase();
+
+	window.parent.postMessage({
+		type: 'horizons-console-error',
+		error: errorString
+	}, '*');
+};
+</script>
+		<script type="module">
+const originalFetch = window.fetch;
+
+window.fetch = function(...args) {
+	const url = args[0] instanceof Request ? args[0].url : args[0];
+
+	// Skip WebSocket URLs
+	if (url.startsWith('ws:') || url.startsWith('wss:')) {
+		return originalFetch.apply(this, args);
+	}
+
+	return originalFetch.apply(this, args)
+		.then(async response => {
+			const contentType = response.headers.get('Content-Type') || '';
+
+			// Exclude HTML document responses
+			const isDocumentResponse =
+				contentType.includes('text/html') ||
+				contentType.includes('application/xhtml+xml');
+
+			if (!response.ok && !isDocumentResponse) {
+					const responseClone = response.clone();
+					const errorFromRes = await responseClone.text();
+					const requestUrl = response.url;
+					console.error(`Fetch error from ${requestUrl}: ${errorFromRes}`);
+			}
+
+			return response;
+		})
+		.catch(error => {
+			if (!url.match(/.html?$/i)) {
+				console.error(error);
+			}
+
+			throw error;
+		});
+};
+</script>
+	</head>
+	<body>
+		<div id="root"><div class="min-h-screen bg-gradient-to-b from-blue-50 to-white"><nav class="bg-white shadow-lg"><div class="max-w-7xl mx-auto px-4"><div class="flex justify-between h-16"><div class="flex space-x-8"><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/">Property Search</a><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/news">Top News</a><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/services">Best Services</a><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/destinations">Tourist Destinations</a><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/jobs">Jobs</a><a class="flex items-center px-3 py-2 text-gray-700 hover:text-blue-600" href="https://mynalgonda.com/events">Events</a></div></div></div></nav><main class="max-w-7xl mx-auto p-8"><div><h1 class="text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Real Estate Properties</h1><div class="mb-8"><div dir="ltr" data-orientation="horizontal" class="w-full"><div role="tablist" aria-orientation="horizontal" class="h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full grid-cols-4 mb-8" tabindex="0" data-orientation="horizontal" style="outline: none;"><button type="button" role="tab" aria-selected="true" aria-controls="radix-:r5:-content-all" data-state="active" id="radix-:r5:-trigger-all" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">All</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:r5:-content-plot" data-state="inactive" id="radix-:r5:-trigger-plot" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Plots</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:r5:-content-house" data-state="inactive" id="radix-:r5:-trigger-house" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Houses</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:r5:-content-commercial" data-state="inactive" id="radix-:r5:-trigger-commercial" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Commercial</button></div></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Location</label><input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2" placeholder="Search by location..." value=""></div><div><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Price Range (USD)</label><span dir="ltr" data-orientation="horizontal" aria-disabled="false" class="relative flex w-full touch-none select-none items-center mt-6" style="--radix-slider-thumb-transform: translateX(-50%);"><span data-orientation="horizontal" class="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"><span data-orientation="horizontal" class="absolute h-full bg-primary" style="left: 0%; right: 0%;"></span></span><span style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 10px);"><span role="slider" aria-valuemin="0" aria-valuemax="1000000" aria-orientation="horizontal" data-orientation="horizontal" tabindex="0" class="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" data-radix-collection-item="" aria-label="Minimum" aria-valuenow="0" style=""></span></span><span style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(100% - 10px);"><span role="slider" aria-valuemin="0" aria-valuemax="1000000" aria-orientation="horizontal" data-orientation="horizontal" tabindex="0" class="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" data-radix-collection-item="" aria-label="Maximum" aria-valuenow="1000000" style=""></span></span></span></div><div><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Size Range (sq ft)</label><span dir="ltr" data-orientation="horizontal" aria-disabled="false" class="relative flex w-full touch-none select-none items-center mt-6" style="--radix-slider-thumb-transform: translateX(-50%);"><span data-orientation="horizontal" class="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"><span data-orientation="horizontal" class="absolute h-full bg-primary" style="left: 0%; right: 0%;"></span></span><span style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 10px);"><span role="slider" aria-valuemin="0" aria-valuemax="5000" aria-orientation="horizontal" data-orientation="horizontal" tabindex="0" class="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" data-radix-collection-item="" aria-label="Minimum" aria-valuenow="0" style=""></span></span><span style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(100% - 10px);"><span role="slider" aria-valuemin="0" aria-valuemax="5000" aria-orientation="horizontal" data-orientation="horizontal" tabindex="0" class="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" data-radix-collection-item="" aria-label="Maximum" aria-valuenow="5000" style=""></span></span></span></div></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" style="opacity: 1; transform: none;"><div class="relative h-48 overflow-hidden"><img class="w-full h-full object-cover" alt="Modern Family Home" src="./Hostinger Horizons_files/photo-1700063745670-d9dc4d6e21e7"></div><div class="p-6"><h3 class="text-xl font-semibold mb-2">Modern Family Home</h3><p class="text-gray-600 mb-4">Beautiful 4-bedroom house with garden</p><div class="flex justify-between items-center text-sm text-gray-500"><span>📍 New York</span><span>📏 2500 sq ft</span></div><div class="mt-4 flex justify-between items-center"><span class="text-lg font-bold text-blue-600">$750,000</span><button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Contact</button></div></div></div><div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" style="opacity: 1; transform: none;"><div class="relative h-48 overflow-hidden"><img class="w-full h-full object-cover" alt="Residential Plot" src="./Hostinger Horizons_files/photo-1700063745670-d9dc4d6e21e7"></div><div class="p-6"><h3 class="text-xl font-semibold mb-2">Residential Plot</h3><p class="text-gray-600 mb-4">Prime location residential plot</p><div class="flex justify-between items-center text-sm text-gray-500"><span>📍 Los Angeles</span><span>📏 5000 sq ft</span></div><div class="mt-4 flex justify-between items-center"><span class="text-lg font-bold text-blue-600">$300,000</span><button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Contact</button></div></div></div><div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" style="opacity: 1; transform: none;"><div class="relative h-48 overflow-hidden"><img class="w-full h-full object-cover" alt="Office Space" src="./Hostinger Horizons_files/photo-1700063745670-d9dc4d6e21e7"></div><div class="p-6"><h3 class="text-xl font-semibold mb-2">Office Space</h3><p class="text-gray-600 mb-4">Modern office space in business district</p><div class="flex justify-between items-center text-sm text-gray-500"><span>📍 Chicago</span><span>📏 1500 sq ft</span></div><div class="mt-4 flex justify-between items-center"><span class="text-lg font-bold text-blue-600">$500,000</span><button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Contact</button></div></div></div></div></div></main></div><div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;"><ol tabindex="-1" class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol></div></div>
+		
+	
+
+</body></html>
